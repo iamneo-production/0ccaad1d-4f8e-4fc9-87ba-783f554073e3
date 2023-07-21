@@ -28,7 +28,7 @@ namespace dotnetapp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           //string connectionString = Configuration.GetConnectionString("myconnstring");
+            //string connectionString = Configuration.GetConnectionString("myconnstring");
            // services.AddDbContext<ProductDBContext>(opt => opt.UseSqlServer(connectionString));
            // services.AddScoped<IProductService, ProductService>();
             services.AddCors();
