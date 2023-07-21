@@ -39,7 +39,7 @@ namespace dotnetapp
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnetapp", Version = "v1" });
             });
         }
-
+//hi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
