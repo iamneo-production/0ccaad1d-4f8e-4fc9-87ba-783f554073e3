@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace dotnetapp.Controllers
 {
+    //API
     [ApiController]
     [Route("")]
     public class AuthController : ControllerBase
