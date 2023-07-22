@@ -16,6 +16,5 @@ namespace dotnetapp.DataBase
         public DbSet<OrderModel> Orders { get; set; }
         public DbSet<GiftModel> Gifts { get; set; }
 
-
     }
 }
