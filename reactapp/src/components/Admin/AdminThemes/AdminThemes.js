@@ -16,7 +16,7 @@ const AdminThemes = () => {
   const filteredThemes  = themesContainer.filter((theme)=> theme.themeId !== id);
   setThemes(filteredThemes)
   setThemesContainer(filteredThemes)
-  axios.delete(`http://localhost:8080/deleteTheme/${id}`,{
+  axios.delete(`https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/deleteTheme/${id}`,{
     "themeId": id
   }).then(response=>{
     console.log(response);

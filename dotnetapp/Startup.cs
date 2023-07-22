@@ -30,21 +30,22 @@ namespace dotnetapp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           string connectionString = Configuration.GetConnectionString("myconnstring");
+            string connectionString = Configuration.GetConnectionString("myconnstring");
             services.AddDbContext<DataDbContext>(opt => opt.UseSqlServer(connectionString));
             services.AddScoped<IEmailService, EmailService>();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("MyCorsPolicy", builder =>
                 {
                     builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
                 });
             });
 
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnetapp", Version = "v1" });
@@ -65,6 +66,7 @@ namespace dotnetapp
 
             app.UseRouting();
 
+            // Enable CORS globally for all endpoints
             app.UseCors("MyCorsPolicy");
 
             app.UseAuthorization();

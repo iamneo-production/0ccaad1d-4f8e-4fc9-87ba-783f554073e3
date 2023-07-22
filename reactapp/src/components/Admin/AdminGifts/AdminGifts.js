@@ -19,7 +19,7 @@ const AdminGifts = () => {
   },[])
 
   const fetchGifts = () =>{
-    axios.get("http://localhost:8080/admin/getGift").then(response=>{
+    axios.get("https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift").then(response=>{
       console.log(response)
       setGifts(response.data.gifts)
     })

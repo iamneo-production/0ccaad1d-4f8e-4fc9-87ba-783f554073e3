@@ -50,7 +50,7 @@ const Signup = () => {
       return;
     }
     axios
-      .post("http://localhost:8080/user/signup", userData)
+      .post("https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/user/signup", userData)
       .then((response) => {
         if (response.status === 201) {
           navigate("/");

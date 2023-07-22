@@ -35,7 +35,7 @@ const AdminOrders = () => {
   // ]
 
   useEffect(()=>{
-    axios.get("http://localhost:8080/admin/getAllOrders").then(response=>{
+    axios.get("https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getAllOrders").then(response=>{
       setOrders(response.data.orders)
       console.log(
         response

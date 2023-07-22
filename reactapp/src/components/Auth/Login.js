@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import backgroundImage from "../images/back.jpg";
 import axios from 'axios';
-//Login
+
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const loginStyles = {
     display: "flex",
@@ -20,29 +22,35 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
-    
-    axios.post('http://localhost:8080/api/auth/login', { email, password })
+console.log(email, password)
+    axios.post('https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/login', { "email" : email
+    , "password": password })
+
       .then(response => {
-        if (response.data.userRole === 'user') {
-          // Redirect to user's home page
-          window.location.href = "/user/Home";
-        } else if (response.data.userRole === 'admin') {
-          // Redirect to admin's home page
-          window.location.href = "/admin/gifts";
+        console.log(response)
+        console.log(response.data)
+        if (response.data.userRole === "admin") {
+          localStorage.setItem('admin',response.data.email);
+          localStorage.setItem('authenticatedUser', false);
+          localStorage.setItem('authenticatedAdmin', true);
         } else {
-          // Handle invalid credentials
+          localStorage.setItem('user',response.data.email);
+          localStorage.setItem('authenticatedUser', true);
+          localStorage.setItem('authenticatedAdmin', false);
+        }
+        if (response.data.userRole === 'user') {
+          navigate('/user/Home');
+        } else if (response.data.userRole === 'admin') {
+          navigate('/admin/gifts');
+        } else {
           setErrorMessage('Invalid username or password.');
         }
       })
       .catch(error => {
         if (error.response) {
-          // The request was made and the server responded with an error status code
           const errorMessage = error.response.data;
           setErrorMessage(errorMessage);
-          // Display the error message on the page
-          // Update the state or show the error message using your preferred method
         } else {
-          // The request was made but no response was received
           console.log('Error occurred during login:', error.message);
         }
       });
@@ -50,8 +58,9 @@ const Login = () => {
 
   const handlesignup = (e) => {
     e.preventDefault();
-    window.location.href = "/signup";
+    navigate('/signup');
   };
+
 
   const formStyles = {
     display: "flex",
@@ -94,6 +103,7 @@ const Login = () => {
             name="email"
             placeholder="Enter email"
             style={inputStyles}
+            autoComplete='off'
             required
           />
         </div>
@@ -121,6 +131,13 @@ const Login = () => {
         <button type="submit" style={buttonStyles} id="loginButton">
           Login
         </button>
+        <p>or</p>
+        <p style={{'cursor':'pointer'}}
+        onClick={()=>{
+          window.location.href = '/forgotpassword';
+        }} 
+        >Forgot password</p>
+        < Outlet/>
       </form>
       <p>
         New user/admin? <br></br>
