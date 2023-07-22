@@ -43,6 +43,7 @@ namespace dotnetapp
 
                 });
             });
+        
             services.AddCors();
 
             services.AddControllers();
