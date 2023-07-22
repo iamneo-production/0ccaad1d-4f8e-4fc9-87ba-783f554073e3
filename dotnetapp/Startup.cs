@@ -13,8 +13,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+
 using dotnetapp.DataBase;
 using dotnetapp.Services;
+
 
 namespace dotnetapp
 {
@@ -30,6 +32,7 @@ namespace dotnetapp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
            string connectionString = Configuration.GetConnectionString("myconnstring");
             services.AddDbContext<DataDbContext>(opt => opt.UseSqlServer(connectionString));
             services.AddScoped<IEmailService, EmailService>();
@@ -44,6 +47,7 @@ namespace dotnetapp
                 });
             });
         
+
             services.AddCors();
 
             services.AddControllers();
@@ -75,4 +79,5 @@ namespace dotnetapp
             });
         }
     }
+
 }
