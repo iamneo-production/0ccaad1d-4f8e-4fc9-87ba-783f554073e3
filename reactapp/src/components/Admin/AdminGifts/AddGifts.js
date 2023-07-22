@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAuthenticationAdmin } from '../../Routing/routing';
-import './AddGift.css';
+import './AddGifts.css';
 const AddGifts = (props) => {
   useAuthenticationAdmin()
   const [name, setName] = useState("")
