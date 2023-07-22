@@ -13,8 +13,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
-using dotnetapp.DataBase;
-using dotnetapp.Services;
 
 namespace dotnetapp
 {
