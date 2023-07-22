@@ -1,0 +1,26 @@
+.ordersTable-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.ordersTable-wrapper table{
+    width: 80%;
+    margin: 10px;
+}
+.ordersTable-wrapper table{
+    border-spacing: 0;
+}
+.ordersTable-wrapper table thead tr{
+    background-color: #FCC056;
+
+}
+.ordersTable-wrapper table tbody tr{
+    background-color: #222E50;
+    color: white;
+
+}
+.ordersTable-wrapper table thead th, tbody td{
+    text-align: left;
+    width: 100px;
+    padding: 10px;
+}
