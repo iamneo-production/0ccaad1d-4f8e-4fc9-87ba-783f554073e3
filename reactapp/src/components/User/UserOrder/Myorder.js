@@ -27,7 +27,7 @@ const Myorder = () => {
     const updatedData = cart.filter((item, index) => item.orderId !== id);
     setCart(updatedData);
     axios
-      .delete(`http://localhost:5035/user/deleteOrder/${id}`)
+      .delete(`http://localhost:8080/user/deleteOrder/${id}`)
       .then((response) => {
         console.log(response);
       });

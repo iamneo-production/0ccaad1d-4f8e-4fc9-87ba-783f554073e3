@@ -17,7 +17,7 @@ const NewPassword = () => {
     e.preventDefault();
     if (password === confirmPassword) {
       axios
-        .put("http://localhost:5035/resetpassword", {
+        .put("http://localhost:8080/resetpassword", {
           email: email,
           password: password,
         })

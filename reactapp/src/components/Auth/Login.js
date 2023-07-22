@@ -21,7 +21,7 @@ const Login = () => {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
     
-    axios.post('http://localhost:5294/api/auth/login', { email, password })
+    axios.post('http://localhost:8080/api/auth/login', { email, password })
       .then(response => {
         if (response.data.userRole === 'user') {
           // Redirect to user's home page

@@ -30,7 +30,7 @@ const Home= () => {
     setOrderDetails(orderDetail)
   }
   useEffect(()=>{
-    // localStorage.setItem('user', 'pragadeesh@gmail.com')
+    
     fetchGifts()
     fetchThemes()
   },[])

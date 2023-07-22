@@ -25,7 +25,7 @@ const ForgotPasswordForm = () => {
       setOtpReceived(otpRes);
       console.log(email, otpRes);
       axios
-        .post("http://localhost:5035/GetOTP", { email: email, otp: otpRes })
+        .post("http://localhost:8080/GetOTP", { email: email, otp: otpRes })
         .then((response) => {
           console.log(response);
           if (response.status === 200) {
