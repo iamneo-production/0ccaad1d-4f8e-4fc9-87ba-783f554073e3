@@ -17,7 +17,7 @@ const Myorder = () => {
   }, []);
   const fetchOrders = (mail) => {
     axios
-      .get(`https://8080-fbedfcfaaeeeeafacbbedddeecfbcbaca.project.examly.io/user/Myorders/${mail}`)
+      .get(`https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/user/Myorders/${mail}`)
       .then((response) => setCart(response.data.order));
   };
   const changeCondition = (bool) => {

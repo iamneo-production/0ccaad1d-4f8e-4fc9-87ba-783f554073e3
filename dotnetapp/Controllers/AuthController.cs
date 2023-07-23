@@ -12,10 +12,11 @@ using dotnetapp.DataBase;
 using dotnetapp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
+using dotnetapp.Dto;
+using dotnetapp.Services;
 
 namespace dotnetapp.Controllers
 {
-    //API
     [ApiController]
     [Route("")]
     public class AuthController : ControllerBase
@@ -39,13 +40,13 @@ namespace dotnetapp.Controllers
             if (isUserPresent)
             {
                 // Redirect to user's home page
-               
-                return Created("Success",loginModel);
+
+                return Created("Success", loginModel);
             }
             else
             {
                 // Invalid credentials
-                return Created("User does not exist or invalid credentials.",loginModel);
+                return Created("User does not exist or invalid credentials.", loginModel);
             }
         }
 
@@ -55,21 +56,64 @@ namespace dotnetapp.Controllers
         {
             // Check if user exists and credentials are correct
             bool isAdminPresent = IsAdminPresent(loginModel);
-            
+
             if (isAdminPresent)
             {
                 // Redirect to admin's home page
-                return Created("Success",loginModel);
+                return Created("Success", loginModel);
             }
             else
             {
                 // Invalid credentials
-                return Created("User does not exist or invalid credentials.",loginModel);
+                return Created("User does not exist or invalid credentials.", loginModel);
             }
         }
 
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public IActionResult Login([FromBody] LoginModel loginModel)
+        {
+            bool isAdminPresent=IsAdminPresent(loginModel);
+            bool isUserPresent=IsUserPresent(loginModel);
+            if(isAdminPresent)
+            {
+                var admin =new {userRole="admin",email=loginModel.email};
+                return Created("Success",admin);
+            }
+            if(isUserPresent)
+            {
+                var user=new {userRole="user",email=loginModel.email};
+                return Created("Success",user);
+            }
+            else{
+            return NotFound("Invalid credentials.");
+            }
+        }
 
-        [HttpPost("user/save")]
+        [HttpPost("GetOTP")]
+        [AllowAnonymous]
+        public IActionResult Getotp([FromBody] ForgetPasstoAdd data,[FromServices] IEmailService emailService)
+        {
+           bool isPresent = _dbContext.Login.Any(u => u.email == data.email);
+           var recipientEmail=data.email;
+           if(isPresent){
+               var subject="One-Time Password (OTP) || Request for reset password";
+               var  body = @"<p style=""font-size: 18px; font-weight: bold;"">One-Time Password (OTP) for Verification</p>
+                       <p style=""font-size: 24px; font-weight: bold;"">Your OTP: "+data.Otp+@"</p>
+                       <p style=""font-size: 14px;"">If you did not initiate this verification or require any assistance, please contact our support team immediately.</p>
+                       <p>Thank you for choosing our services.</p>
+                       <p>Best regards,<br>Joyful givers</p>
+                       <p><em>Note: This email is automated. Please do not reply to this email.</em></p>"; 
+                    
+                     //Call to mail trigger function
+                    emailService.SendEmail(recipientEmail, subject, body);
+                    return Ok(new{message="OTP Generated Successfully"});
+           }
+           return NotFound("Email does not exist");
+           
+        }
+
+        [HttpPost("user/save")] 
         [AllowAnonymous]
         public IActionResult SignupUser([FromBody] UserModel userModel)
         {
@@ -119,7 +163,7 @@ namespace dotnetapp.Controllers
             {
                 return _dbContext.Users.Any(u => u.email == loginModel.email && u.password == loginModel.password);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("The error is" + e);
                 return false;
@@ -162,6 +206,6 @@ namespace dotnetapp.Controllers
             _dbContext.Admin.Add(adminModel);
             _dbContext.SaveChanges();
         }
-       
+
     }
 }

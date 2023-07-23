@@ -172,7 +172,7 @@ const handlePay = async() =>{
     "mailId":localStorage.getItem('user'),
     "orderFields":mailingOrders
   }).then(response=>{
-// window.location.href = '/user/myorder'
+     window.location.href = '/user/myorder'
   })
   console.log(mail)
 
