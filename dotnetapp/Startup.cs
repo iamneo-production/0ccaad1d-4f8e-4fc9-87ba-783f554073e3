@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using dotnetapp.DataBase;
 using dotnetapp.Services;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace dotnetapp
 {
@@ -34,13 +35,14 @@ namespace dotnetapp
             services.AddDbContext<DataDbContext>(opt => opt.UseSqlServer(connectionString));
             services.AddScoped<IEmailService, EmailService>();
 
-            services.AddCors(options =>
+                services.AddCors(options =>
             {
                 options.AddPolicy("MyCorsPolicy", builder =>
                 {
                     builder.AllowAnyOrigin()
-                           .AllowAnyMethod()
-                           .AllowAnyHeader();
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+
                 });
             });
 
@@ -49,6 +51,7 @@ namespace dotnetapp
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnetapp", Version = "v1" });
+                
             });
         }
 
@@ -66,10 +69,12 @@ namespace dotnetapp
 
             app.UseRouting();
 
-            // Enable CORS globally for all endpoints
             app.UseCors("MyCorsPolicy");
 
+        
+           
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
