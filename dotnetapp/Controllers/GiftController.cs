@@ -29,8 +29,7 @@ namespace dotnetapp.Controllers
                 GiftModel gift = new GiftModel()
                 {
                     GiftName = data.GiftName,
-                    GiftImageUrl = data.GiftImageUrl
-                                    ,
+                    GiftImageUrl = data.GiftImageUrl,
                     GiftDetails = data.GiftDetails,
                     GiftPrice = data.GiftPrice,
                     GiftQuantity = data.GiftQuantity
@@ -55,7 +54,7 @@ namespace dotnetapp.Controllers
             {
                 if (_context.Gifts?.ToList().Count == 0)
                 {
-                    return Ok("Gifts not found");
+                    return NotFound("Gifts not found");
                 }
                 var gifts = _context.Gifts?.ToList();
                 return Ok(new { success = true, mesaage = "Retrive all the gift details", gifts });

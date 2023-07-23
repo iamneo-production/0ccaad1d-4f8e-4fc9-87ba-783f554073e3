@@ -71,7 +71,7 @@ const AdminGifts = () => {
     // const filteredGifts = gifts.filter((gift,index)=>index!==id)
     console.log(gifts)
     console.log("deleted")
-    axios.delete(`https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`)
+    axios.delete(`https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`)
     
   }
   const changeCondition = (bool) =>{
@@ -80,7 +80,7 @@ const AdminGifts = () => {
   
   }
   const updateHandler =(gift) =>{
-    axios.put(`https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/editGift/${gift.id}`, {
+    axios.put(`https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/admin/editGift/${gift.id}`, {
       "GiftName": gift.name,
       "GiftImageUrl": gift.url,
       "GiftDetails": gift.details,

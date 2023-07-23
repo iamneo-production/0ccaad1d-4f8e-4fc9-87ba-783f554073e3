@@ -72,7 +72,7 @@ namespace dotnetapp
             app.UseCors("MyCorsPolicy");
 
         
-           
+   
             app.UseAuthorization();
             
 
