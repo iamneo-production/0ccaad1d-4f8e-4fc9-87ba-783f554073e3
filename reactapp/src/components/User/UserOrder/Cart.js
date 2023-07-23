@@ -168,7 +168,7 @@ const handlePay = async() =>{
     }
   }
 
-  const mail = await axios.post('https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
+  const mail = await axios.post('https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
     "mailId":localStorage.getItem('user'),
     "orderFields":mailingOrders
   }).then(response=>{
