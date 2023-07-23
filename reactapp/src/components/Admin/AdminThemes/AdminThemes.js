@@ -69,7 +69,7 @@ const updateCompleted = (theme,bool) =>{
     "themePrice" : theme.themePrice,
     "themeDetails" : theme.themeDetails
   }).then(()=>{
-    axios.get("https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
+    axios.get("https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
     .then(response=>{
       setThemes(response.data.themes)
       setThemesContainer(response.data.themes)
