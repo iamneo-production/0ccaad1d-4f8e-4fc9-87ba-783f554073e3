@@ -62,14 +62,14 @@ const editTheme = (editTheme) =>{
 
 const updateCompleted = (theme,bool) =>{
 
-  axios.put(`http://localhost:8080/editTheme/${theme.themeId}`,
+  axios.put(`https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/editTheme/${theme.themeId}`,
   {
     "themeId" : theme.themeId,
     "themeName" : theme.themeName,
     "themePrice" : theme.themePrice,
     "themeDetails" : theme.themeDetails
   }).then(()=>{
-    axios.get("http://localhost:8080/admin/getTheme")
+    axios.get("https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
     .then(response=>{
       setThemes(response.data.themes)
       setThemesContainer(response.data.themes)
@@ -93,7 +93,7 @@ setAddOrUpdate(bool)
         }
       
        
-        axios.post("http://localhost:8080/admin/addTheme",{
+        axios.post("https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addTheme",{
           "ThemeName" : name,
           "ThemePrice" : price,
           "ThemeDetails" : description
@@ -116,7 +116,7 @@ setAddOrUpdate(bool)
   }
  
   useEffect(()=>{
-    axios.get("http://localhost:8080/admin/getTheme")
+    axios.get("https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
     .then(response=>{
       setThemes(response.data.themes)
       setThemesContainer(response.data.themes)
