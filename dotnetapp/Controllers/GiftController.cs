@@ -55,7 +55,7 @@ namespace dotnetapp.Controllers
             {
                 if (_context.Gifts?.ToList().Count == 0)
                 {
-                    return NotFound("Gifts not found");
+                    return Ok("Gifts not found");
                 }
                 var gifts = _context.Gifts?.ToList();
                 return Ok(new { success = true, mesaage = "Retrive all the gift details", gifts });
