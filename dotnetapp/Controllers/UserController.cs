@@ -116,7 +116,7 @@ namespace dotnetapp.Controllers
             {
                 return BadRequest(new
                 {
-                    Message = "Error Occured"
+                    Message ="Error occured"
                 });
             }
         }
@@ -234,7 +234,7 @@ namespace dotnetapp.Controllers
             }
              
             //Check if email is in admin table
-            var admin = _context.Users.FirstOrDefault(u => u.email == updateddata.email);
+            var admin = _context.Admin.FirstOrDefault(u => u.email == updateddata.email);
             if(admin!=null)
             {
               admin.password=updateddata.password; 

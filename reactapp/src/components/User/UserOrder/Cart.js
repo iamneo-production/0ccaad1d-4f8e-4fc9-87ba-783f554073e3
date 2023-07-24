@@ -137,7 +137,7 @@ const handlePay = async() =>{
   const mailingOrders = []
   for(const cartItem of cart){
     try{
-      await axios.post('http://localhost:8080/user/addOrder',{
+      await axios.post('https://8080-caefefcaeacdbebafcdcbccefeddcbcbaffb.project.examly.io/user/addOrder',{
         "orderName": cartItem.orderGiftName,
         "orderDescription": cartItem.orderDescription,
         "ThemeId": cartItem.orderThemeId,
@@ -168,11 +168,11 @@ const handlePay = async() =>{
     }
   }
 
-  const mail = await axios.post('http://localhost:8080/user/orderConfirmation',{
+  const mail = await axios.post('https://8080-caefefcaeacdbebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
     "mailId":localStorage.getItem('user'),
     "orderFields":mailingOrders
   }).then(response=>{
-// window.location.href = '/user/myorder'
+     window.location.href = '/user/myorder'
   })
   console.log(mail)
 

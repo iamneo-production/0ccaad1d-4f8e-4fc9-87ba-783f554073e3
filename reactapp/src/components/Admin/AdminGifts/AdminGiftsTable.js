@@ -39,7 +39,7 @@ props.EditGift(gift)
         </thead>
         <tbody>
        
-        {giftsTable.length===0 ?  <tr> <td colSpan={6} style={{'textAlign':'center'}}>No orders found</td></tr> : (
+        {giftsTable.length===0 ?  <tr> <td colSpan={6} style={{'textAlign':'center'}}>No Gift found</td></tr> : (
         giftsTable.map((gift, index) =>{
        
           return(

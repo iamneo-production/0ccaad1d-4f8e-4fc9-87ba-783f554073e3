@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dotnetapp.DataBase;
 using dotnetapp.Dto;
+using dotnetapp.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dotnetapp.Controllers
 {
@@ -16,10 +18,12 @@ namespace dotnetapp.Controllers
     public class OrderController : ControllerBase
     {
         private readonly DataDbContext _context;
-
+        
+        // private readonly IEmailService _emailservice;
         public OrderController(DataDbContext context)
         {
             _context = context;
+            // _emailservice=emailservice;
         }
 
         [HttpGet("admin/getAllOrders")]
@@ -74,7 +78,7 @@ namespace dotnetapp.Controllers
             try
             {
 
-                var order = _context.Orders?
+                var order = _context.Orders?    
                     .Where(o => o.OrderEmail == email)
                     .Include(o => o.Theme)
                     .Include(o => o.Gift).ToList();
@@ -109,7 +113,6 @@ namespace dotnetapp.Controllers
                     return NotFound("No gift stock available");
                 }
                 gift.GiftQuantity = gift.GiftQuantity - order.OrderQuantity; //update gift quantity
-                Console.WriteLine(order.OrderDate);
 
                 var newOrder = new OrderModel
                 {
@@ -131,11 +134,53 @@ namespace dotnetapp.Controllers
 
 
 
-
                 return Ok(new { success = true, message = "Order added", newOrder });
             }
             catch (Exception e)
             {
+                return BadRequest(new { success = false, message = e.Message });
+            }
+        }
+
+        //POST : api/orderConfirmation [After payment order details mail to customer]
+        [HttpPost("user/orderConfirmation")]
+        public async Task<IActionResult> Orderconfirmation([FromBody] OrderconfirmtoAdd orders,[FromServices] IEmailService emailService){
+            try{
+                var recipientEmail=orders.MailId;
+                var subject = "Order Confirmation";
+
+                //Styles
+                var body=@"<!DOCTYPE html> <html> <head><style> 
+                body { font-family: Arial, sans-serif; line-height: 1.5; color:black; } 
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; } 
+                th, td { padding: 10px; border: 1px solid #dddddd; } </style> </head>";
+
+                if(subject==null)
+                   subject="Order Confirmation";
+
+
+                body+=@"<body><h1 style='color: #0088cc;'>Thank you for placing your order with JoyFul Givers!</h1> 
+                <p>We are pleased to inform you that we have received your payment successfully.
+                Your order is now being processed.</p> <h2>Order Details:</h2> <table> <thead> 
+                <tr> <th>Order ID</th> <th>Gift Name</th> <th>Theme Name</th> <th>Price</th><th>Quantity
+                </th></tr></thead><tbody>";
+
+                foreach (var order in orders.OrderFields)
+                {
+                   body+=@"<tr><td>"+order.OrderId+"</td><td>"+order.GiftName+"</td><td>"+order.ThemeName+"</td><td>"+order.OrderPrice+"</td><td>"+order.OrderQuantity+"</td></tr>";
+                }
+                body+=@"</tbody></table> <p>If you have any questions or need further assistance, please 
+                don't hesitate to contact our customer support team at joyfulgiversnameboardgift@gmail.com or +916127987777.We are always happy to help.</p> <p>Thank you once again for choosing Joyfulgivers. 
+                We appreciate your business and look forward to serving you.</p><p>Best regards,<br> Joyfulgivers 
+                <br>Customized Nameboard Team</p></body></html>";
+            
+
+                //Call to mail trigger function
+                 emailService.SendEmail(recipientEmail, subject, body);
+
+                return Ok(new { success = true, message = "Mail generated successfully", orders.OrderFields });
+                }
+            catch(Exception e){
                 return BadRequest(new { success = false, message = e.Message });
             }
         }
@@ -188,10 +233,7 @@ namespace dotnetapp.Controllers
                 return BadRequest(new { success = false, message = e.Message });
             }
         }
-
-
-
-        // DELETE: api/deleteOrder/{OrderId}        
+    
         [HttpDelete("user/deleteOrder/{OrderId}")]
         public IActionResult DeleteOrder(int OrderId)
         {

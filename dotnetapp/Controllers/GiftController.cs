@@ -29,8 +29,7 @@ namespace dotnetapp.Controllers
                 GiftModel gift = new GiftModel()
                 {
                     GiftName = data.GiftName,
-                    GiftImageUrl = data.GiftImageUrl
-                                    ,
+                    GiftImageUrl = data.GiftImageUrl,
                     GiftDetails = data.GiftDetails,
                     GiftPrice = data.GiftPrice,
                     GiftQuantity = data.GiftQuantity
