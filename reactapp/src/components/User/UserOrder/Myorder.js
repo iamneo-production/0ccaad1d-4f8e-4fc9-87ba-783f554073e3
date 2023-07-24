@@ -17,7 +17,7 @@ const Myorder = () => {
   }, []);
   const fetchOrders = (mail) => {
     axios
-      .get(`https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/user/Myorders/${mail}`)
+      .get(`https://8080-beacfbfacaabbdffbebafcdcbccefeddcbcbaffb.project.examly.io/user/Myorders/${mail}`)
       .then((response) => setCart(response.data.order));
   };
   const changeCondition = (bool) => {
@@ -27,7 +27,7 @@ const Myorder = () => {
     const updatedData = cart.filter((item, index) => item.orderId !== id);
     setCart(updatedData);
     axios
-      .delete(`https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/user/deleteOrder/${id}`)
+      .delete(`https://8080-beacfbfacaabbdffbebafcdcbccefeddcbcbaffb.project.examly.io/user/deleteOrder/${id}`)
       .then((response) => {
         console.log(response);
       });
