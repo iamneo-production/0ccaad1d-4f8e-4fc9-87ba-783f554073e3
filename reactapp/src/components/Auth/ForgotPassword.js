@@ -25,7 +25,7 @@ const ForgotPasswordForm = () => {
       setOtpReceived(otpRes);
       console.log(email, otpRes);
       axios
-        .post("https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/GetOTP", { email: email, otp: otpRes })
+        .post("https://8080-adfacebdabebafcdcbccefeddcbcbaffb.project.examly.io/GetOTP", { email: email, otp: otpRes })
         .then((response) => {
           console.log(response);
           if (response.status === 200) {

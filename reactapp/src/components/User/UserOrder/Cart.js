@@ -137,7 +137,7 @@ const handlePay = async() =>{
   const mailingOrders = []
   for(const cartItem of cart){
     try{
-      await axios.post('https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/user/addOrder',{
+      await axios.post('https://8080-adfacebdabebafcdcbccefeddcbcbaffb.project.examly.io/user/addOrder',{
         "orderName": cartItem.orderGiftName,
         "orderDescription": cartItem.orderDescription,
         "ThemeId": cartItem.orderThemeId,
@@ -168,7 +168,7 @@ const handlePay = async() =>{
     }
   }
 
-  const mail = await axios.post('https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
+  const mail = await axios.post('https://8080-adfacebdabebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
     "mailId":localStorage.getItem('user'),
     "orderFields":mailingOrders
   }).then(response=>{
