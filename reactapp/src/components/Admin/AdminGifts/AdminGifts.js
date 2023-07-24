@@ -19,7 +19,7 @@ const AdminGifts = () => {
   },[])
 
   const fetchGifts = () =>{
-    axios.get("https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift").then(response=>{
+    axios.get("https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift").then(response=>{
       console.log(response)
       setGifts(response.data.gifts)
     })
@@ -35,7 +35,7 @@ const AdminGifts = () => {
     
     console.log(gift)
     console.log("added")
-    axios.post(`https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addGift`,{
+    axios.post(`https://8080-ebcbbbadecbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addGift`,{
       "giftImageUrl" : newGift.giftImageUrl,
       "giftName" : newGift.giftName,
       "giftPrice" : newGift.giftPrice,
