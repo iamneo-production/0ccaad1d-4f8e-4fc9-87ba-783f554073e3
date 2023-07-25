@@ -18,7 +18,7 @@ namespace dotnetapp.Models
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
         public DateTime OrderDate { get; set; }
-
+    
         public int OrderPrice { get; set; }
         public string OrderAddress { get; set; }
         public string OrderPhone { get; set; }
