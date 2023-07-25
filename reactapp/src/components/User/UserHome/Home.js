@@ -100,8 +100,14 @@ const Home= () => {
         {products.length === 0 ? '' : (
           products.map((product, index) => (
             <button id={`grid${product.giftId}`} onClick={()=>
-            {setHomeorder(false)
+            {
+              if(product.giftQuantity > 1){
+                setHomeorder(false)
             handleOrderDetails(product.giftName, product.giftPrice, product.giftId)
+              }
+              else{
+                alert("No stocks available")
+              }
             }}>
             <div
               key={product.giftId}
@@ -119,6 +125,10 @@ const Home= () => {
                   borderRadius: '5px',
                 }}
               >
+                {
+                product.giftQuantity === 0 ? <p>out of stock</p> : ''
+              }
+
                 <img
                   src={product.giftImageUrl}
                   alt={product.giftName}
