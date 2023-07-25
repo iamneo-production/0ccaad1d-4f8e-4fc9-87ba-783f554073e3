@@ -126,7 +126,7 @@ const Home= () => {
                 }}
               >
                 {
-                product.giftQuantity === 0 ? <p>out of stock</p> : ''
+                product.giftQuantity === 0 ? <p style={{color:'red'}}>out of stock</p> : ''
               }
 
                 <img
