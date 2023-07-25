@@ -115,6 +115,7 @@ console.log(email, password)
             name="password"
             placeholder="Enter password"
             style={inputStyles}
+            autoComplete='off'
             required
           />
         </div>
@@ -124,6 +125,7 @@ console.log(email, password)
           id="showPassword"
           checked={passwordVisible}
           onChange={() => setPasswordVisible(!passwordVisible)}
+          autoComplete='off'
         />
         <label htmlFor="showPassword">Show Password</label>
       </div>
