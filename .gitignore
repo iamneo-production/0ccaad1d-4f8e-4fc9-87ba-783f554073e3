@@ -1,5 +1,2 @@
-nunit/
-dotnetapp/
-react/
-reactapp/
-done/
+node_modules/
+done
