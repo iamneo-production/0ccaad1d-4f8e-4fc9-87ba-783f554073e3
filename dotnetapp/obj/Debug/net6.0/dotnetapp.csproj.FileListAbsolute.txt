@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 =======
 >>>>>>> 4a3bc44b6be30c654dbdf768b29e3c63b03fb8c0
+<<<<<<< HEAD
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/appsettings.Development.json
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/appsettings.json
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/obj/project.assets.json
@@ -83,3 +84,5 @@
 /home/coder/project/workspace/dotnetapp/obj/Debug/net6.0/dotnetapp.pdb
 /home/coder/project/workspace/dotnetapp/obj/Debug/net6.0/dotnetapp.genruntimeconfig.cache
 /home/coder/project/workspace/dotnetapp/obj/Debug/net6.0/ref/dotnetapp.dll
+=======
+>>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782

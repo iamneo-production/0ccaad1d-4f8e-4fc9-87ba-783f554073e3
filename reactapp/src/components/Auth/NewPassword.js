@@ -17,7 +17,11 @@ const NewPassword = () => {
     e.preventDefault();
     if (password === confirmPassword) {
       axios
+<<<<<<< HEAD
         .put("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/resetpassword", {
+=======
+        .put("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/resetpassword", {
+>>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
           email: email,
           password: password,
         })

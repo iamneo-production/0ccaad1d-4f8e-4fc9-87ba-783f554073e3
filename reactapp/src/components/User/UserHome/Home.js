@@ -21,11 +21,12 @@ const Home= () => {
   const [products, setProducts] = useState([])
   const [themes, setThemes] = useState(null);
   const [orderDetails, setOrderDetails] = useState(null)
-  const handleOrderDetails = (name, price, id) => {
+  const handleOrderDetails = (name, price, id, quantity) => {
     const orderDetail = {
         "giftName" : name,
         "giftPrice" : price,
-        "giftId":id
+        "giftId":id,
+        "giftQuantity" : quantity
     }
     setOrderDetails(orderDetail)
   }
@@ -35,12 +36,20 @@ const Home= () => {
     fetchThemes()
   },[])
   const fetchThemes = async() =>{
+<<<<<<< HEAD
     const response = await axios.get("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/user/getAllThemes")
+=======
+    const response = await axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/user/getAllThemes")
+>>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
     setThemes(response.data.themes)
     console.log(response)
   }
   const fetchGifts = async() =>{
+<<<<<<< HEAD
     const response = await axios.get("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift")
+=======
+    const response = await axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift")
+>>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
     setProducts(response.data.gifts)
     console.log(response)
   }
@@ -100,8 +109,14 @@ const Home= () => {
         {products.length === 0 ? '' : (
           products.map((product, index) => (
             <button id={`grid${product.giftId}`} onClick={()=>
-            {setHomeorder(false)
-            handleOrderDetails(product.giftName, product.giftPrice, product.giftId)
+            {
+              if(product.giftQuantity > 1){
+                setHomeorder(false)
+            handleOrderDetails(product.giftName, product.giftPrice, product.giftId, product.giftQuantity)
+              }
+              else{
+                alert("No stocks available")
+              }
             }}>
             <div
               key={product.giftId}
@@ -119,6 +134,10 @@ const Home= () => {
                   borderRadius: '5px',
                 }}
               >
+                {
+                product.giftQuantity === 0 ? <p style={{color:'red'}}>out of stock</p> : ''
+              }
+
                 <img
                   src={product.giftImageUrl}
                   alt={product.giftName}

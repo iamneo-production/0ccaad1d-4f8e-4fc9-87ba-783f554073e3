@@ -35,7 +35,11 @@ const AdminOrders = () => {
   // ]
 
   useEffect(()=>{
+<<<<<<< HEAD
     axios.get("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getAllOrders").then(response=>{
+=======
+    axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getAllOrders").then(response=>{
+>>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
       setOrders(response.data.orders)
       console.log(
         response
