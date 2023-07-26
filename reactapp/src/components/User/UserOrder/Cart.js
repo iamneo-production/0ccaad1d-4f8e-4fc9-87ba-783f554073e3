@@ -137,11 +137,7 @@ const handlePay = async() =>{
   const mailingOrders = []
   for(const cartItem of cart){
     try{
-<<<<<<< HEAD
-      await axios.post('https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/user/addOrder',{
-=======
-      await axios.post('https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/user/addOrder',{
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+      await axios.post('https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/user/addOrder',{
         "orderName": cartItem.orderGiftName,
         "orderDescription": cartItem.orderDescription,
         "ThemeId": cartItem.orderThemeId,
@@ -172,11 +168,7 @@ const handlePay = async() =>{
     }
   }
 
-<<<<<<< HEAD
-  const mail = await axios.post('https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
-=======
-  const mail = await axios.post('https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+  const mail = await axios.post('https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
     "mailId":localStorage.getItem('user'),
     "orderFields":mailingOrders
   }).then(response=>{

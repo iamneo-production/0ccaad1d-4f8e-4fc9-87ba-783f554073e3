@@ -16,11 +16,7 @@ const AdminThemes = () => {
   const filteredThemes  = themesContainer.filter((theme)=> theme.themeId !== id);
   setThemes(filteredThemes)
   setThemesContainer(filteredThemes)
-<<<<<<< HEAD
-  axios.delete(`https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/deleteTheme/${id}`,{
-=======
-  axios.delete(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/deleteTheme/${id}`,{
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+  axios.delete(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/deleteTheme/${id}`,{
     "themeId": id
   }).then(response=>{
     console.log(response);
@@ -66,22 +62,14 @@ const editTheme = (editTheme) =>{
 
 const updateCompleted = (theme,bool) =>{
 
-<<<<<<< HEAD
-  axios.put(`https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/editTheme/${theme.themeId}`,
-=======
-  axios.put(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/editTheme/${theme.themeId}`,
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+  axios.put(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/editTheme/${theme.themeId}`,
   {
     "themeId" : theme.themeId,
     "themeName" : theme.themeName,
     "themePrice" : theme.themePrice,
     "themeDetails" : theme.themeDetails
   }).then(()=>{
-<<<<<<< HEAD
-    axios.get("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
-=======
-    axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+    axios.get("https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
     .then(response=>{
       setThemes(response.data.themes)
       setThemesContainer(response.data.themes)
@@ -105,11 +93,7 @@ setAddOrUpdate(bool)
         }
       
        
-<<<<<<< HEAD
-        axios.post("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addTheme",{
-=======
-        axios.post("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addTheme",{
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+        axios.post("https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/addTheme",{
           "ThemeName" : name,
           "ThemePrice" : price,
           "ThemeDetails" : description
@@ -132,11 +116,7 @@ setAddOrUpdate(bool)
   }
  
   useEffect(()=>{
-<<<<<<< HEAD
-    axios.get("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
-=======
-    axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+    axios.get("https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/getTheme")
     .then(response=>{
       setThemes(response.data.themes)
       setThemesContainer(response.data.themes)

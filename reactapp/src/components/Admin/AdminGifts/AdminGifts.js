@@ -19,9 +19,7 @@ const AdminGifts = () => {
   },[])
 
   const fetchGifts = () =>{
-
-    axios.get("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift").then(response=>{
-
+    axios.get("https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift").then(response=>{
       console.log(response)
       setGifts(response.data.gifts)
     })
@@ -37,11 +35,10 @@ const AdminGifts = () => {
     
     console.log(gift)
     console.log("added")
-<<<<<<< HEAD
-    axios.post(`https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addGift`,{
-=======
+
     axios.post(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addGift`,{
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+
+
       "giftImageUrl" : newGift.giftImageUrl,
       "giftName" : newGift.giftName,
       "giftPrice" : newGift.giftPrice,
@@ -77,12 +74,12 @@ const AdminGifts = () => {
     // const filteredGifts = gifts.filter((gift,index)=>index!==id)
     console.log(gifts)
     console.log("deleted")
-<<<<<<< HEAD
-    axios.delete(`https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`)
-=======
+
     axios.delete(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`)
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
-    
+
+
+    axios.delete(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`)
+
   }
   const changeCondition = (bool) =>{
     // setAddOrEditGifts(bool)
@@ -90,11 +87,10 @@ const AdminGifts = () => {
   
   }
   const updateHandler =(gift) =>{
-<<<<<<< HEAD
-    axios.put(`https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/editGift/${gift.id}`, {
-=======
-    axios.put(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/editGift/${gift.id}`, {
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+
+ 
+    axios.put(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/editGift/${gift.id}`, {
+
       "GiftName": gift.name,
       "GiftImageUrl": gift.url,
       "GiftDetails": gift.details,

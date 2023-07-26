@@ -36,20 +36,12 @@ const Home= () => {
     fetchThemes()
   },[])
   const fetchThemes = async() =>{
-<<<<<<< HEAD
-    const response = await axios.get("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/user/getAllThemes")
-=======
-    const response = await axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/user/getAllThemes")
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+    const response = await axios.get("https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/user/getAllThemes")
     setThemes(response.data.themes)
     console.log(response)
   }
   const fetchGifts = async() =>{
-<<<<<<< HEAD
-    const response = await axios.get("https://8080-dcbafaeadabbbccbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift")
-=======
-    const response = await axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift")
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
+    const response = await axios.get("https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift")
     setProducts(response.data.gifts)
     console.log(response)
   }
