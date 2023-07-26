@@ -13,30 +13,6 @@ const Myorder = () => {
   const [email, setEmail] = useState(null);
 
   const [cart, setCart] = useState([]);
-<<<<<<< HEAD
-  useEffect(() => {
-    const mail = localStorage.getItem("user");
-    setEmail(mail);
-    fetchOrders(mail);
-  }, []);
-  const fetchOrders = (mail) => {
-    axios
-      .get(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/user/Myorders/${mail}`)
-      .then((response) => setCart(response.data.order));
-  };
-  const changeCondition = (bool) => {
-    setAddOrEditorder(bool);
-  };
-  const handleDelete = (id) => {
-    const updatedData = cart.filter((item, index) => item.orderId !== id);
-    setCart(updatedData);
-    axios
-      .delete(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/user/deleteOrder/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
-  };
-=======
 
   useEffect(()=>{
     const mail = localStorage.getItem('user')
@@ -63,7 +39,6 @@ const Myorder = () => {
 
     
    };
->>>>>>> b6722a79642f1576f3d410b9f6825133a3ada782
   return (
     <>
     <Header active = 'orders'/>
