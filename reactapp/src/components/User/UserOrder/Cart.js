@@ -241,9 +241,14 @@ const handlePay = async() =>{
                     <input style={{'width':'40px'}} min='1' type = 'number' value={item.orderQuantity}
                         onChange = {
                             (e)=>{
-                            
 
-                                updateCartValue(index, Math.max(1, parseInt(e.target.value)))
+                                if(e.target.value > item.totalQuantity){
+                                  alert("Avlailable Quantity is " + item.totalQuantity)
+                                }
+                                else{
+                                  updateCartValue(index, Math.max(1, parseInt(e.target.value)))
+
+                                }
                               
 
 

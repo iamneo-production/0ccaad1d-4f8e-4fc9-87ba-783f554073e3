@@ -58,6 +58,7 @@ const PlaceOrder = (props) => {
         orderThemeId: themeId,
         orderGiftId: giftId,
         orderGiftName: giftName,
+        totalQuantity : props.orders.giftQuantity
       };
 
       if (localStorage.getItem('orders')) {
@@ -160,7 +161,7 @@ const PlaceOrder = (props) => {
               {
             
               if(e.target.value > props.orders.giftQuantity){
-                alert("Quantity is less than or equal to " + props.orders.giftQuantity)
+                alert("Avlailable Quantity is " + props.orders.giftQuantity)
               }
               else{
                 setQuantity(Math.max(1, parseInt(e.target.value)))
