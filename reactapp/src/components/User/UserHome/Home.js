@@ -21,11 +21,12 @@ const Home= () => {
   const [products, setProducts] = useState([])
   const [themes, setThemes] = useState(null);
   const [orderDetails, setOrderDetails] = useState(null)
-  const handleOrderDetails = (name, price, id) => {
+  const handleOrderDetails = (name, price, id, quantity) => {
     const orderDetail = {
         "giftName" : name,
         "giftPrice" : price,
-        "giftId":id
+        "giftId":id,
+        "giftQuantity" : quantity
     }
     setOrderDetails(orderDetail)
   }
@@ -103,7 +104,7 @@ const Home= () => {
             {
               if(product.giftQuantity > 1){
                 setHomeorder(false)
-            handleOrderDetails(product.giftName, product.giftPrice, product.giftId)
+            handleOrderDetails(product.giftName, product.giftPrice, product.giftId, product.giftQuantity)
               }
               else{
                 alert("No stocks available")

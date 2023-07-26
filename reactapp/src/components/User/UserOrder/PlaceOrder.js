@@ -156,9 +156,20 @@ const PlaceOrder = (props) => {
           <input
             type="number"
             value={quantity}
-            onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
+            onChange={(e) => 
+              {
+            
+              if(e.target.value > props.orders.giftQuantity){
+                alert("Quantity is less than or equal to " + props.orders.giftQuantity)
+              }
+              else{
+                setQuantity(Math.max(1, parseInt(e.target.value)))
+              }
+            }
+            }
             placeholder="Quantity"
             min="1"
+            max={props.orders.giftQuantity}
             className={`inputField ${quantity <= 0 && showAlert ? 'required-field' : ''}`}
           />
           <input
