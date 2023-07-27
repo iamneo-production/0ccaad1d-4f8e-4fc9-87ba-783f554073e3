@@ -238,9 +238,21 @@ const handlePay = async() =>{
                   <div className="cart-item-column cart-action" style={{'display':'flex', 'justifyContent':'center','alignItems':'center', 'verticalAlign':'middle'}}>
                     {/* <a href id="editOrder" ><i className="fas fa-edit edit-icon" onClick={() =>handleEdit(item)}></i></a> */}
 
-                    <input style={{'width':'40px'}} type = 'number' value={item.orderQuantity}
+                    <input style={{'width':'40px'}} min='1' type = 'number' value={item.orderQuantity}
                         onChange = {
-                            (e)=>{updateCartValue(index, e.target.value)}
+                            (e)=>{
+
+                                if(e.target.value > item.totalQuantity){
+                                  alert("Avlailable Quantity is " + item.totalQuantity)
+                                }
+                                else{
+                                  updateCartValue(index, Math.max(1, parseInt(e.target.value)))
+
+                                }
+                              
+
+
+                            }
                         }
                     />
                     <span>Pcs</span>
