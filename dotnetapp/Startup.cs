@@ -13,9 +13,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
-using dotnetapp.DataBase;
-using dotnetapp.Services;
-using Microsoft.AspNetCore.HttpOverrides;
 
 namespace dotnetapp
 {
@@ -31,27 +28,15 @@ namespace dotnetapp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("myconnstring");
-            services.AddDbContext<DataDbContext>(opt => opt.UseSqlServer(connectionString));
-            services.AddScoped<IEmailService, EmailService>();
-
-                services.AddCors(options =>
-            {
-                options.AddPolicy("MyCorsPolicy", builder =>
-                {
-                    builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-
-                });
-            });
+            //string connectionString = Configuration.GetConnectionString("myconnstring");
+           // services.AddDbContext<ProductDBContext>(opt => opt.UseSqlServer(connectionString));
+           // services.AddScoped<IProductService, ProductService>();
+            services.AddCors();
 
             services.AddControllers();
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnetapp", Version = "v1" });
-                
             });
         }
 
@@ -69,12 +54,7 @@ namespace dotnetapp
 
             app.UseRouting();
 
-            app.UseCors("MyCorsPolicy");
-
-        
-   
             app.UseAuthorization();
-            
 
             app.UseEndpoints(endpoints =>
             {
