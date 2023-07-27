@@ -12,8 +12,14 @@ const AdminThemes = () => {
   useAuthenticationAdmin()
   const themeId = ['enterThemeName','enterThemePrice','enterThemeDescription','ADD']
 
- const themeDelete= (id) =>{
-  const filteredThemes  = themesContainer.filter((theme)=> theme.themeId !== id);
+ const themeDelete= async (id) =>{
+  await axios.get(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/checkTheme/${id}`)
+.then(response=>{
+  console.log(response)
+  if(response.data.message ==="true")
+  {alert("This Theme is under Order");}
+  else if(response.data.message==="false"){
+    const filteredThemes  = themesContainer.filter((theme)=> theme.themeId !== id);
   setThemes(filteredThemes)
   setThemesContainer(filteredThemes)
   axios.delete(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/deleteTheme/${id}`,{
@@ -21,6 +27,11 @@ const AdminThemes = () => {
   }).then(response=>{
     console.log(response);
   })
+  }
+}
+
+)
+  
 }
 
 const searchQuery = useRef(null)
