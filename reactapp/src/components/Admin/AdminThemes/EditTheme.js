@@ -6,6 +6,7 @@ const EditTheme = (props) => {
   const [name, setName] = useState(props.updatedValue.themeName);
   const [price, setPrice] = useState(props.updatedValue.themePrice);
   const [details, setDetails] = useState(props.updatedValue.themeDetails);
+  const [danger , setDanger]  = useState("")
   const afterUpdate = () => {
     const bool = 1;
     const theme = {
@@ -19,13 +20,25 @@ const EditTheme = (props) => {
   return (
     <>
       <div className="addTheme-container">
+        
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            afterUpdate();
+            if(name === "" || price ==="" || details === ""){
+              setDanger("All fields are required")
+            }
+            else if(Number (price) < 0){
+              setDanger("Price must be greater than zero")
+            }
+            else{
+              setDanger("")
+              afterUpdate();
+
+            }
           }}
         >
           <h2 style={{ textAlign: "center" }}>Edit theme</h2>
+          <p style={{'textAlign':'center','color':'red'}}>{danger}</p>
           <div className="form-input">
             <input
               type="text"

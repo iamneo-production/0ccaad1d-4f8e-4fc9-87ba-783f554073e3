@@ -8,6 +8,7 @@ const AddGifts = (props) => {
   const [price, setPrice] = useState("")
   const [quantity, setQuantity] = useState("")
   const [details, setDetails] = useState("")
+  const [danger, setDanger] = useState("")
   const addedGift = () =>{
     const gift = {
       "giftImageUrl" : url,
@@ -29,11 +30,30 @@ const AddGifts = (props) => {
       <form onSubmit={
         (e)=>{
           e.preventDefault();
-          addedGift()
+          // addedGift()
+          if( price === "" || quantity === "" || url === "" || details ==="" || name === ""){
+            setDanger("All fields must be required")
+          }
+          else if(Number (price)<0){
+            setDanger("Price must be greater than zero")
+          }
+          else if(Number (quantity)<0){
+            setDanger("Quantity must be greater than zero")
+          }
+          else{
+            setDanger("")
+            addedGift()
+            setUrl("")
+            setName("")
+            setQuantity("")
+            setDetails("")
+            setPrice("")
+          }
         }
       } style={formStyles}>
         <div className='form-input'>
         <h2>Add Gift</h2>
+        <p style={{'textAlign':'center', 'color':'red'}} className='danger'>{danger}</p>
            <input
               type="text"
               id="enterGiftName"
