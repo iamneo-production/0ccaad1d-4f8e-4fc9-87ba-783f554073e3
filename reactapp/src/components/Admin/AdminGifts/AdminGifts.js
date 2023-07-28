@@ -19,7 +19,7 @@ const AdminGifts = () => {
   },[])
 
   const fetchGifts = () =>{
-    axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift").then(response=>{
+    axios.get("https://8080-dcfeffdefefcdbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift").then(response=>{
       console.log(response)
       setGifts(response.data.gifts)
     })
@@ -35,7 +35,7 @@ const AdminGifts = () => {
     
     console.log(gift)
     console.log("added")
-    axios.post(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addGift`,{
+    axios.post(`https://8080-dcfeffdefefcdbebafcdcbccefeddcbcbaffb.project.examly.io/admin/addGift`,{
       "giftImageUrl" : newGift.giftImageUrl,
       "giftName" : newGift.giftName,
       "giftPrice" : newGift.giftPrice,
@@ -67,15 +67,11 @@ const AdminGifts = () => {
     
 
   }
-  const deletedGift = (id,afterDelete) =>{
+  const deletedGift = (id) =>{
     // const filteredGifts = gifts.filter((gift,index)=>index!==id)
     console.log(gifts)
-    console.log(id)
     console.log("deleted")
-    axios.delete(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`).then(response=>{
-      console.log(response)
-      setGifts(afterDelete)
-    })
+    axios.delete(`https://8080-dcfeffdefefcdbebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`)
     
   }
   const changeCondition = (bool) =>{
@@ -84,7 +80,7 @@ const AdminGifts = () => {
   
   }
   const updateHandler =(gift) =>{
-    axios.put(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/editGift/${gift.id}`, {
+    axios.put(`https://8080-dcfeffdefefcdbebafcdcbccefeddcbcbaffb.project.examly.io/admin/editGift/${gift.id}`, {
       "GiftName": gift.name,
       "GiftImageUrl": gift.url,
       "GiftDetails": gift.details,

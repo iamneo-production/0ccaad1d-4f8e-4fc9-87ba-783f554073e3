@@ -21,12 +21,11 @@ const Home= () => {
   const [products, setProducts] = useState([])
   const [themes, setThemes] = useState(null);
   const [orderDetails, setOrderDetails] = useState(null)
-  const handleOrderDetails = (name, price, id, quantity) => {
+  const handleOrderDetails = (name, price, id) => {
     const orderDetail = {
         "giftName" : name,
         "giftPrice" : price,
-        "giftId":id,
-        "giftQuantity" : quantity
+        "giftId":id
     }
     setOrderDetails(orderDetail)
   }
@@ -36,12 +35,12 @@ const Home= () => {
     fetchThemes()
   },[])
   const fetchThemes = async() =>{
-    const response = await axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/user/getAllThemes")
+    const response = await axios.get("https://8080-dcfeffdefefcdbebafcdcbccefeddcbcbaffb.project.examly.io/user/getAllThemes")
     setThemes(response.data.themes)
     console.log(response)
   }
   const fetchGifts = async() =>{
-    const response = await axios.get("https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift")
+    const response = await axios.get("https://8080-dcfeffdefefcdbebafcdcbccefeddcbcbaffb.project.examly.io/admin/getGift")
     setProducts(response.data.gifts)
     console.log(response)
   }
@@ -101,14 +100,8 @@ const Home= () => {
         {products.length === 0 ? '' : (
           products.map((product, index) => (
             <button id={`grid${product.giftId}`} onClick={()=>
-            {
-              if(product.giftQuantity > 1){
-                setHomeorder(false)
-            handleOrderDetails(product.giftName, product.giftPrice, product.giftId, product.giftQuantity)
-              }
-              else{
-                alert("No stocks available")
-              }
+            {setHomeorder(false)
+            handleOrderDetails(product.giftName, product.giftPrice, product.giftId)
             }}>
             <div
               key={product.giftId}
@@ -126,10 +119,6 @@ const Home= () => {
                   borderRadius: '5px',
                 }}
               >
-                {
-                product.giftQuantity === 0 ? <p style={{color:'red'}}>out of stock</p> : ''
-              }
-
                 <img
                   src={product.giftImageUrl}
                   alt={product.giftName}
