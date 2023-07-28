@@ -23,7 +23,7 @@ const Login = () => {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
 console.log(email, password)
-    axios.post('https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/login', { "email" : email
+    axios.post('https://8080-bdfdeaacbaffbebafcdcbccefeddcbcbaffb.project.examly.io/login', { "email" : email
     , "password": password })
 
       .then(response => {
