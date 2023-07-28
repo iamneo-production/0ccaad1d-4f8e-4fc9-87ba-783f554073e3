@@ -2,14 +2,27 @@ import React, { useState } from 'react'
 import "./AdminGiftsTable.css"
 import {FaEdit,FaTrash} from "react-icons/fa"
 import { useAuthenticationAdmin } from '../../Routing/routing'
+import axios from 'axios'
 const AdminGiftsTable = (props) => {
   useAuthenticationAdmin()
 const [giftsTable, setGiftsTable] = useState(props.gifts)
 console.log(giftsTable)
-const deleteGift = (id) =>{
-  const filteredGifts = giftsTable.filter((gift)=>gift.giftId!==id)
-        setGiftsTable(filteredGifts)
-  props.deleteGiftHandler(id)
+const deleteGift =async (id) =>{
+await axios.get(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/admin/check/${id}`)
+.then(response=>{
+  console.log(response)
+  if(response.data.message ==="true")
+  {alert("This Gift is under Order");}
+  else if(response.data.message==="false"){
+    console.log(response)
+    const filteredGifts = giftsTable.filter((gift)=>gift.giftId!==id)
+    setGiftsTable(filteredGifts)
+    props.deleteGiftHandler(id, filteredGifts)
+  }
+}
+
+)
+  
 }
 
 
