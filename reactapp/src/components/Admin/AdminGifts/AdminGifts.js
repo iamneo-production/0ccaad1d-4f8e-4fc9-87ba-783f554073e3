@@ -67,11 +67,15 @@ const AdminGifts = () => {
     
 
   }
-  const deletedGift = (id) =>{
+  const deletedGift = (id,afterDelete) =>{
     // const filteredGifts = gifts.filter((gift,index)=>index!==id)
     console.log(gifts)
+    console.log(id)
     console.log("deleted")
-    axios.delete(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`)
+    axios.delete(`https://8080-bdedccbceacfdedbebafcdcbccefeddcbcbaffb.project.examly.io/admin/deleteGift/${id}`).then(response=>{
+      console.log(response)
+      setGifts(afterDelete)
+    })
     
   }
   const changeCondition = (bool) =>{

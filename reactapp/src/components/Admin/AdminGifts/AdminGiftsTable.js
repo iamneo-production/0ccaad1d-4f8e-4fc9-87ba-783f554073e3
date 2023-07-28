@@ -9,7 +9,7 @@ console.log(giftsTable)
 const deleteGift = (id) =>{
   const filteredGifts = giftsTable.filter((gift)=>gift.giftId!==id)
         setGiftsTable(filteredGifts)
-  props.deleteGiftHandler(id)
+  props.deleteGiftHandler(id,filteredGifts)
 }
 
 
