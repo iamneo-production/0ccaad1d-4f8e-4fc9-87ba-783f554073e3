@@ -21,6 +21,7 @@ const Home= () => {
   const [products, setProducts] = useState([])
   const [themes, setThemes] = useState(null);
   const [orderDetails, setOrderDetails] = useState(null)
+  useAuthenticationUser();
   const handleOrderDetails = (name, price, id, quantity) => {
     const orderDetail = {
         "giftName" : name,
