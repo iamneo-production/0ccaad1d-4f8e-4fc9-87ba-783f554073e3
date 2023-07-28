@@ -82,6 +82,31 @@ namespace dotnetapp.Controllers
             }
         }
 
+        //checking these
+         [HttpGet("admin/checkTheme/{themeid}")]
+        public IActionResult CheckTheme(int themeid)
+        {
+            try
+            {
+                bool req = _context.Orders.Any(u=> u.Theme.ThemeId ==  themeid);
+                if(req)
+                {
+                    return Ok(new{
+                        message="true"
+                    });
+                }
+                else{
+                    return Ok(new{
+                        message = "false"
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { success = false, message = e.Message });
+            }
+        }
+
         //User select a theme details
         [HttpGet("User/getTheme/{themeId}")]
         public IActionResult GetTheme(int themeId)

@@ -6,6 +6,7 @@ const AddTheme = (props) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [danger, setDanger] = useState("");
   const addOrUpdate = (name, price, description) => {
     props.onAddOrUpdate(name, price, description);
   };
@@ -14,10 +15,23 @@ const AddTheme = (props) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          if(name === "" || price ==="" || description === ""){
+            setDanger("All fields are required")
+          }
+          else if(Number (price) < 0){
+            setDanger("Price must be greater than zero")
+          }
+          else{
+            setDanger("")
           addOrUpdate(name, price, description);
+          setName("")
+          setPrice("")
+          setDescription("")
+          }
         }}
       >
         <h2 style={{ textAlign: "center" }}>Add theme</h2>
+        <p style={{'textAlign':'center','color':'red'}}>{danger}</p>
         <div className="form-input">
           <input
             type="text"

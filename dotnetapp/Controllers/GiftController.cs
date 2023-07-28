@@ -83,6 +83,31 @@ namespace dotnetapp.Controllers
                 return BadRequest(new { success = false, message = e.Message });
             }
         }
+        //Checking Gift before delete
+
+        [HttpGet("admin/check/{giftId}")]
+        public IActionResult CheckGift(int giftId)
+        {
+            try
+            {
+                bool req = _context.Orders.Any(u=> u.Gift.GiftId ==  giftId);
+                if(req)
+                {
+                    return Ok(new{
+                        message="true"
+                    });
+                }
+                else{
+                    return Ok(new{
+                        message = "false"
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { success = false, message = e.Message });
+            }
+        }
 
         //Admin edit a gift details
         [HttpPut("admin/editGift/{giftId}")]
