@@ -20,7 +20,7 @@ const Myorder = () => {
     fetchOrders(mail)
   },[])
   const fetchOrders = (mail) =>{
-    axios.get(`https://8080-fecfcfddebecabebafcdcbccefeddcbcbaffb.project.examly.io/user/Myorders/${mail}`).then((response)=>setCart(response.data.order))
+    axios.get(`https://8080-afdebdcbccecffabbebafcdcbccefeddcbcbaffb.project.examly.io/user/Myorders/${mail}`).then((response)=>setCart(response.data.order))
   }
 
 
