@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAuthenticationAdmin } from '../../Routing/routing'
 import "./Orders.css"
+import { format } from 'date-fns';
 const Orders = (props) => {
   useAuthenticationAdmin()
   return (
@@ -13,6 +14,7 @@ const Orders = (props) => {
             <th>Gift Name</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>Date</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +27,7 @@ const Orders = (props) => {
                     <td>{order.gift.giftName}</td>
                     <td>{order.orderPrice}</td>
                     <td>{order.orderQuantity}</td>
+                    <td>{format(new Date(order.orderDate), 'dd-MM-yyyy')}</td>
                 </tr>
             )
         })
