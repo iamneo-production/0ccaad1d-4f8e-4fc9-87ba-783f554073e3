@@ -8,9 +8,10 @@ const EditGift = (props) => {
     const [name, setName]= useState(props.gift.giftName)
     const [price, setPrice]= useState(props.gift.giftPrice)
     const [quantity, setQuantity]= useState(props.gift.giftQuantity)
-    const updateHandler = () =>{
-        console.log("updated")
-    }
+  const [danger, setDanger] = useState("")
+    // const updateHandler = () =>{
+    //     console.log("updated")
+    // }
     const bool = 1
     const updateCondition = (bool) =>{
         props.changeComponent(bool)
@@ -24,7 +25,18 @@ const EditGift = (props) => {
       <div className="container" style={{bodyStyles}}>
       <form onSubmit={(e)=>{
         e.preventDefault();
-        updateHandler();
+        // updateHandler();
+        if( price === "" || quantity === "" || url === "" || detail ==="" || name === ""){
+          setDanger("All fields must be required")
+        }
+        else if(Number (price)<0){
+          setDanger("Price must be greater than zero")
+        }
+        else if(Number (quantity)<0){
+          setDanger("Quantity must be greater than zero")
+        }
+        else{
+          setDanger("")
         updateCondition(bool)
          // This is the body part
         const gift = {
@@ -36,10 +48,12 @@ const EditGift = (props) => {
           "details" : detail
         }
         props.onUpdateHandler(gift)
+      }
+
       }}  className="editform">
 
       <h2>Edit Gift</h2>
-
+      <p style={{'textAlign':'center', 'color':'red'}}>{danger}</p>
         <input type="text" placeholder='Enter the gift name' id="editGiftName"
             value={name}
             onChange ={(e)=>{
