@@ -80,6 +80,6 @@ namespace dotnetapp
             {
                 endpoints.MapControllers();
             });
-        }
-    }
+        }
+    }
 }
