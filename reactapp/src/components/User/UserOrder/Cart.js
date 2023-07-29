@@ -137,7 +137,7 @@ const handlePay = async() =>{
   const mailingOrders = []
   for(const cartItem of cart){
     try{
-      await axios.post('https://8080-caefefcaeacdbebafcdcbccefeddcbcbaffb.project.examly.io/user/addOrder',{
+      await axios.post('https://8080-beacfbfacaabbdffbebafcdcbccefeddcbcbaffb.project.examly.io/user/addOrder',{
         "orderName": cartItem.orderGiftName,
         "orderDescription": cartItem.orderDescription,
         "ThemeId": cartItem.orderThemeId,
@@ -168,7 +168,7 @@ const handlePay = async() =>{
     }
   }
 
-  const mail = await axios.post('https://8080-caefefcaeacdbebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
+  const mail = await axios.post('https://8080-beacfbfacaabbdffbebafcdcbccefeddcbcbaffb.project.examly.io/user/orderConfirmation',{
     "mailId":localStorage.getItem('user'),
     "orderFields":mailingOrders
   }).then(response=>{
@@ -238,9 +238,21 @@ const handlePay = async() =>{
                   <div className="cart-item-column cart-action" style={{'display':'flex', 'justifyContent':'center','alignItems':'center', 'verticalAlign':'middle'}}>
                     {/* <a href id="editOrder" ><i className="fas fa-edit edit-icon" onClick={() =>handleEdit(item)}></i></a> */}
 
-                    <input style={{'width':'40px'}} type = 'number' value={item.orderQuantity}
+                    <input style={{'width':'40px'}} min='1' type = 'number' value={item.orderQuantity}
                         onChange = {
-                            (e)=>{updateCartValue(index, e.target.value)}
+                            (e)=>{
+
+                                if(e.target.value > item.totalQuantity){
+                                  alert("Avlailable Quantity is " + item.totalQuantity)
+                                }
+                                else{
+                                  updateCartValue(index, Math.max(1, parseInt(e.target.value)))
+
+                                }
+                              
+
+
+                            }
                         }
                     />
                     <span>Pcs</span>
