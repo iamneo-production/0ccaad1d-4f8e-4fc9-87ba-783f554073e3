@@ -8,7 +8,7 @@ const AdminGiftsTable = (props) => {
 const [giftsTable, setGiftsTable] = useState(props.gifts)
 console.log(giftsTable)
 const deleteGift =async (id) =>{
-await axios.get(`https://8080-beacfbfacaabbdffbebafcdcbccefeddcbcbaffb.project.examly.io/admin/check/${id}`)
+await axios.get(`https://8080-adaeccbcebebafcdcbccefeddcbcbaffb.project.examly.io/admin/check/${id}`)
 .then(response=>{
   console.log(response)
   if(response.data.message ==="true")
