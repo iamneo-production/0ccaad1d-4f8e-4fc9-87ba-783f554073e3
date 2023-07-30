@@ -1,0 +1,32 @@
+.adminNavigation-wrapper{
+    background-color: #222E50;
+}
+.navigation-title{
+    color: white;
+    font-weight: bold;
+}
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.links{
+    display: flex;
+}
+
+.links li{
+    list-style-type: none;
+    padding: 0 20px;
+}
+.links li a{
+    text-decoration: none;
+    color: white;
+}
+.logout a{
+    text-decoration: none;
+    color: white;
+}
+.active{
+    border-bottom: 2px solid white;;
+}
