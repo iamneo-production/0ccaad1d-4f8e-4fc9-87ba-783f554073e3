@@ -51,36 +51,3 @@ namespace dotnetapp.Models
         }
     }
 }
-
-        public int OrderPrice { get; set; }
-        public string OrderAddress { get; set; }
-        public string OrderPhone { get; set; }
-        public string OrderEmail { get; set; }
-        public int OrderQuantity { get; set; }
-        public ThemeModel? Theme { get; set; }
-        public GiftModel? Gift { get; set; }
-        public OrderModel()
-        {
-            if (OrderEmail == null)
-            {
-                OrderEmail = "";
-            }
-            if (OrderDescription == null)
-            {
-                OrderDescription = "";
-            }
-            if (OrderAddress == null)
-            {
-                OrderAddress = "";
-            }
-            if (OrderPhone == null)
-            {
-                OrderPhone = "";
-            }
-            if (OrderName == null)
-            {
-                OrderName = "";
-            }
-        }
-    }
-}
