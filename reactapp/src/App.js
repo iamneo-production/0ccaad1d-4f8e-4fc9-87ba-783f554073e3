@@ -11,7 +11,6 @@ import EditTheme from "./components/Admin/AdminThemes/EditTheme";
 import Cart from "./components/User/UserOrder/Cart";
 import ForgotPasswordForm from "./components/Auth/ForgotPassword";
 import NewPassword from "./components/Auth/NewPassword";
-
 function App() {
   return (
     <div className="App">
@@ -38,5 +37,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
