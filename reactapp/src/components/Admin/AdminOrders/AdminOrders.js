@@ -35,7 +35,7 @@ const AdminOrders = () => {
   // ]
 
   useEffect(()=>{
-    axios.get("https://8080-ebcbbbadecbebafcdcbccfcecaabcfba.project.examly.io/admin/getAllOrders").then(response=>{
+    axios.get("https://https://8080-afdebdcbccecffabbebafcdcbccfcecaabcfba.project.examly.io/swagger/index.html/admin/getAllOrders").then(response=>{
       setOrders(response.data.orders)
       console.log(
         response
