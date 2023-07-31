@@ -50,7 +50,7 @@ const Signup = () => {
       return;
     }
     axios
-      .post("https://8080-bdedccbceacfdedbebafcdcbccfcecaabcfba.project.examly.io/user/signup", userData)
+      .post("https://8080-caefefcaeacdbebafcdcbccfcecaabcfba.project.examly.io/user/signup", userData)
       .then((response) => {
         if (response.status === 201) {
           navigate("/");
