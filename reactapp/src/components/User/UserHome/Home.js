@@ -37,12 +37,12 @@ const Home= () => {
     fetchThemes()
   },[])
   const fetchThemes = async() =>{
-    const response = await axios.get("https://8080-adfacebdabebafcdcbccfcecaabcfba.project.examly.io/user/getAllThemes")
+    const response = await axios.get("https://8080-bdedccbceacfdedbebafcdcbccfcecaabcfba.project.examly.io/user/getAllThemes")
     setThemes(response.data.themes)
     console.log(response)
   }
   const fetchGifts = async() =>{
-    const response = await axios.get("https://8080-adfacebdabebafcdcbccfcecaabcfba.project.examly.io/admin/getGift")
+    const response = await axios.get("https://8080-bdedccbceacfdedbebafcdcbccfcecaabcfba.project.examly.io/admin/getGift")
     setProducts(response.data.gifts)
     console.log(response)
   }
